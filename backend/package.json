@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon -w server/app.js --exec \"babel-node server/app.js\"",
+    "start": "dist/index.js",
+    "prestart": "npm run -s build",
+    "dev": "nodemon -w server/app.js --exec \"babel-node server/app.js\"",
+    "build": "rimraf ./dist && babel ./server -d ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "jest": {
@@ -13,6 +16,7 @@
     "@babel/cli": "^7.16.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^10.0.0",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.15",
