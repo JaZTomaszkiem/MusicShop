@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import NavBar from '../components/NavBar/NavBar';
 
 const Test = styled.div`
-  padding-left: 330px;
+  /* padding-left: 330px; */
 `;
 
 const MainTemplate = ({ children }) => {
   return (
     <>
+      <NavBar></NavBar>
       <Test>{children}</Test>
     </>
   );
