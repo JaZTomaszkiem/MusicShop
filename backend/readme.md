@@ -8,7 +8,7 @@ Before anything else, you must have node installed on your machine.
 
 ### Running Dev Server
 
-Run on your terminal `npm start`, the server will restart everytime you make a change in your code.
+Run on your terminal `npm run dev`, the server will restart everytime you make a change in your code.
 
 ### Running Production Server
 
