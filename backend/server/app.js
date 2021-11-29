@@ -6,18 +6,41 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 const dotenv = require('dotenv').config();
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+//import config files
+// import { swaggerOptions } from './config/swaggerOption.js';
 // import routes
 import indexRouter from './routes/index';
 import usersRouter from './routes/users';
 
 const app = express();
 
+//use middleware
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors());
-
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Library API',
+      version: '1.0.0',
+      description: 'A simple Express Library API',
+    },
+    servers: [
+      {
+        url: 'http://localhost:5000',
+      },
+    ],
+  },
+  apis: [`${__dirname}/docs/*.js`],
+};
+let test = swaggerJsDoc(swaggerOptions);
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(test));
+//use router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
