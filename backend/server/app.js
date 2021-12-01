@@ -8,11 +8,11 @@ import bodyParser from 'body-parser';
 const dotenv = require('dotenv').config();
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
-//import config files
-// import { swaggerOptions } from './config/swaggerOption.js';
+
 // import routes
-import indexRouter from './routes/index';
+
 import usersRouter from './routes/users';
+import guitarRouter from './routes/guitar';
 
 const app = express();
 
@@ -26,7 +26,6 @@ const swaggerOptions = {
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'Library API',
       version: '1.0.0',
       description: 'A simple Express Library API',
     },
@@ -41,8 +40,9 @@ const swaggerOptions = {
 let test = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(test));
 //use router
-app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
+app.use('/guitar', guitarRouter);
 
 // app.use(bodyParser.json({ limit: '30mb', extends: true }));
 // app.use(bodyParser.urlencoded({ limit: '30mb', extends: true }));
