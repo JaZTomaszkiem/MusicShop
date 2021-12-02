@@ -1,1 +1,4 @@
-export const actionTypes = {};
+export const actionTypes = {
+  GET_ALL_GUITARS: 'GET_ALL_GUITARS',
+  CREATE_ALL_GUITARS: 'CREATE_ALL_GUITARS',
+};
