@@ -1,4 +1,7 @@
+upload/
+!**/*/upload/
 node_modules
 dist
-.env
-package-lock.json
+*.tar.gz
+*.env
+!env-local.env
