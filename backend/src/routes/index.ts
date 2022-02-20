@@ -1,3 +1,4 @@
 import status from './status';
+import test from './test';
 
-export default [status];
+export default [status, test];
