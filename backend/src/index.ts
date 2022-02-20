@@ -1,5 +1,6 @@
 import express, { Response, Request, NextFunction } from 'express';
 
+import Config from './lib/config';
 import { createErrorFromNative } from './lib/error';
 import {
   respondWithSuccess,
@@ -32,8 +33,8 @@ for (let route of routes) {
 }
 
 app
-  .listen(8080, () => {
-    console.log('Server listening on port 8080');
+  .listen(Config.PORT, () => {
+    console.log(`Server listening on port ${Config.PORT}`);
   })
   .on('error', (error) => {
     console.log(error);
