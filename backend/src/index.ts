@@ -1,6 +1,6 @@
 import express, { Response, Request, NextFunction } from 'express';
+import mongoose from 'mongoose';
 
-import Config from './lib/config';
 import { createErrorFromNative } from './lib/error';
 import {
   respondWithSuccess,
@@ -22,7 +22,7 @@ for (let route of routes) {
           req.body = await validateRequestPayload(req.body, route.schema);
         }
 
-        const response = route.controller(req, res, next);
+        const response = await route.controller(req, res, next);
 
         return respondWithSuccess(res, response);
       } catch (error: any) {
@@ -32,10 +32,12 @@ for (let route of routes) {
   );
 }
 
-app
-  .listen(Config.PORT, () => {
-    console.log(`Server listening on port ${Config.PORT}`);
-  })
-  .on('error', (error) => {
-    console.log(error);
-  });
+// app.listen(8080);
+
+const PORT = process.env.PORT || 5000;
+mongoose
+  .connect(
+    'mongodb+srv://admin:admin@cluster0.ph7fc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+  )
+  .then(() => app.listen(PORT, () => console.log(`app runing on ${PORT}`)))
+  .catch((error) => console.log(error));

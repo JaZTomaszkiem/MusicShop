@@ -1,4 +1,4 @@
 import status from './status';
-import test from './test';
+import guitars from './guitars';
 
-export default [status, test];
+export default [status, ...guitars];

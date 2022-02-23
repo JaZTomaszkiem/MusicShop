@@ -7,18 +7,18 @@ import APIError from './error';
 
 export function respondWithSuccess(
   res: Response,
-  data: any,
-  code = HTTPCode.OK
+  data: any = null,
+  status: number = HTTPCode.OK
 ) {
   res.setHeader('Content-Type', 'application/json');
 
-  const response = { status: 'ok', data };
+  const response = { status, data };
   const parsed =
     Config.NODE_ENV === 'development'
       ? JSON.stringify(response, null, 4)
       : JSON.stringify(response);
 
-  return res.status(code).send(parsed);
+  return res.status(status).send(parsed);
 }
 
 export function closeWithError(res: Response, error: APIError) {
