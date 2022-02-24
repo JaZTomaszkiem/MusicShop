@@ -1,5 +1,6 @@
 import express, { Response, Request, NextFunction } from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 import { createErrorFromNative } from './lib/error';
 import {
@@ -11,6 +12,11 @@ import routes from './routes';
 
 const app = express();
 
+app.use(
+  cors({
+    origin: 'http://localhost:3000',
+  })
+);
 app.use(express.json({ strict: true }));
 
 for (let route of routes) {

@@ -6,7 +6,7 @@ export const getAllGuitars = () => async dispatch => {
     const { data } = await api.getAllGuitars();
     dispatch({
       type: actionTypes.GET_ALL_GUITARS,
-      payload: data.allGuitars,
+      payload: data.data,
     });
   } catch (error) {
     console.log(error.message);
