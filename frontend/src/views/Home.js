@@ -1,102 +1,70 @@
-import { useEffect, useState } from 'react';
+import Button from '@mui/material/Button';
+import Input from '@mui/material/Input';
+
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllGuitars, createAllGuitars, deleteGuitar, updateGuitar } from '../actions/guitars';
 import { useForm } from 'react-hook-form';
 const Home = () => {
   const dispatch = useDispatch();
-  const [guitarId, setGuitarId] = useState('');
-  const [name, setName] = useState('');
-  const [updateName, setUpdateName] = useState('');
-  const [price, setPrice] = useState('');
-  const [updatePrice, setUpdatePrice] = useState('');
+
   const allGuitars = useSelector(state => state.ItemReducer);
+
+  const { register, handleSubmit } = useForm();
 
   useEffect(() => {
     dispatch(getAllGuitars());
   }, [dispatch]);
-  const handleCreate = e => {
-    e.preventDefault();
-    dispatch(
-      createAllGuitars({
-        name: name,
-        price: price,
-      }),
-    );
+  const handleCreate = data => {
+    dispatch(createAllGuitars(data));
   };
 
   const handleGet = () => {
     dispatch(getAllGuitars());
   };
 
-  const handleDelete = e => {
-    e.preventDefault();
-    dispatch(deleteGuitar(guitarId));
+  const handleDelete = data => {
+    dispatch(deleteGuitar(data));
   };
 
-  const handleUpdate = e => {
-    dispatch(updateGuitar(guitarId, updateName, updatePrice));
+  const handleUpdate = data => {
+    dispatch(updateGuitar(data.updateId, data.updateName, data.updatePrice));
   };
-
-  const { handleSubmit, register, errors } = useForm();
-
+  console.log(allGuitars);
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit(handleCreate)}>
         <label htmlFor="name">Name</label>
-        <input
-          name="name"
-          ref={register()}
-          id="name"
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
+        {/* <input {...register('name')} id="name" type="text" /> */}
+        <Input {...register('name')} id="name" type="text" />
         <label htmlFor="price">Price</label>
-        <input
-          id="price"
-          type="number"
-          price="price"
-          value={price}
-          onChange={e => setPrice(e.target.value)}
-        />
-
-        <button onClick={handleCreate}>Add</button>
+        <input {...register('price')} id="price" type="number" />
+        {/* <button type="submit">Add</button> */}
+        <Button variant="outlined" type="submit">
+          Create
+        </Button>
       </form>
-      <form onSubmit={handleDelete}>
+
+      <form onSubmit={handleSubmit(handleDelete)}>
         <label>Delete</label>
         <button type="submit">Delete</button>
-        <input onChange={e => setGuitarId(e.target.value)} value={guitarId} />
+        <input {...register('id')} />
       </form>
-      <form>
-        <label htmlFor="updateName">Id</label>
-        <input
-          id="id"
-          type="text"
-          name="id"
-          value={guitarId}
-          onChange={e => setGuitarId(e.target.value)}
-        />
-        <label htmlFor="updatePrice">Change Name</label>
-        <input
-          id="updateName"
-          type="text"
-          name="updateName"
-          value={updateName}
-          onChange={e => setUpdateName(e.target.value)}
-        />
-        <label htmlFor="updateName">Change Price</label>
-        <input
-          name="updatePrice"
-          type="text"
-          price="price"
-          value={updatePrice}
-          onChange={e => setUpdatePrice(e.target.value)}
-        />
-        <button type="button" onClick={handleUpdate}>
-          Update
-        </button>
+
+      <form onSubmit={handleSubmit(handleGet)}>
+        <button onClick={handleGet}>Get All</button>
       </form>
-      <button onClick={handleGet}>Get All</button>
+
+      <form onSubmit={handleSubmit(handleUpdate)}>
+        <label htmlFor="updateId">Id</label>
+        <input {...register('updateId')} id="updateId" type="text" />
+        <label htmlFor="updateName">Change Name</label>
+        <input {...register('updateName')} id="updateName" type="text" />
+        <label htmlFor="updatePrice">Change Price</label>
+        <input {...register('updatePrice')} id="updatePrice" type="text" />
+        <button type="submit">Update</button>
+      </form>
+
       {allGuitars.map(guitar => (
         <li key={guitar._id}>{`nazwa: ${guitar.name} cena: ${guitar.price}`}</li>
       ))}

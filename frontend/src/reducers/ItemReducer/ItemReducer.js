@@ -12,7 +12,7 @@ const ItemReducer = (state = [], action) => {
       const arrayOfId = state.map(x => x._id);
       const indexOfItemToUpdate = arrayOfId.indexOf(action.payload._id);
       const newState = {
-        id: action.payload._id,
+        _id: action.payload._id,
         name: action.payload.name,
         price: action.payload.price,
       };

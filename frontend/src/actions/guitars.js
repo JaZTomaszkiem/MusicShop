@@ -41,7 +41,9 @@ export const deleteGuitar = guitarId => async dispatch => {
 
 export const updateGuitar = (guitarId, name, price) => async dispatch => {
   try {
+    console.log(guitarId, name, price);
     const { data } = await api.updateGuitar(guitarId, name, price);
+    console.log(guitarId, name, price);
     dispatch({
       type: actionTypes.UPDATE_GUITAR,
       payload: data.data,
