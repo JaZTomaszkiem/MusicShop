@@ -6,12 +6,17 @@ import { Request } from 'express';
 
 export default {
   method: HTTPMethod.PATCH,
-  url: '/guitars/:id',
+  url: '/guitar',
   controller: async (req: Request) => {
     const updateGuitar = await Guitars.findByIdAndUpdate(
-      req.params.id,
-      req.body
-    );
+      req.body.id,
+      {
+        name: req.body.name,
+        price: req.body.price,
+      },
+      { new: true }
+    ).exec();
+    console.log(updateGuitar);
 
     return updateGuitar;
   },

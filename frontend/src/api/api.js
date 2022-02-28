@@ -1,6 +1,6 @@
 import axios from 'axios';
 const axiosApi = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: `${process.env.REACT_APP_BASE_URL}`,
   timeout: 1000,
   headers: { 'X-Custom-Header': 'foobar' },
 });
@@ -17,7 +17,28 @@ export const getAllGuitars = async () => {
 
 export const createAllGuitars = async ({ name, price }) => {
   try {
-    const response = await axiosApi.post(`/guitars/add`, { name, price: parseFloat(price) });
+    const response = await axiosApi.post(`/guitars`, { name, price });
+
+    return response;
+  } catch (error) {
+    throw new Error('Error occured');
+  }
+};
+
+export const deleteGuitar = async id => {
+  try {
+    const response = await axiosApi.delete(`/guitar`, { id });
+
+    return response;
+  } catch (error) {
+    throw new Error('Error occured');
+  }
+};
+
+export const updateGuitar = async (id, name, price) => {
+  try {
+    console.log(id, name, price);
+    const response = await axiosApi.patch(`/guitar`, { id, name, price });
 
     return response;
   } catch (error) {

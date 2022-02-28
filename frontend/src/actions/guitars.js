@@ -18,8 +18,33 @@ export const createAllGuitars = guitar => async dispatch => {
     const data = await api.createAllGuitars(guitar);
     console.log(data);
     dispatch({
-      type: actionTypes.CREATE_ALL_GUITARS,
+      type: actionTypes.CREATE_GUITAR,
       payload: guitar,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const deleteGuitar = guitarId => async dispatch => {
+  try {
+    const data = await api.deleteGuitar(guitarId);
+    console.log(data);
+    dispatch({
+      type: actionTypes.DELETE_GUITAR,
+      payload: guitarId,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+export const updateGuitar = (guitarId, name, price) => async dispatch => {
+  try {
+    const { data } = await api.updateGuitar(guitarId, name, price);
+    dispatch({
+      type: actionTypes.UPDATE_GUITAR,
+      payload: data.data,
     });
   } catch (error) {
     console.log(error.message);
