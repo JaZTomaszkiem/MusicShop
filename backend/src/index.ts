@@ -45,5 +45,5 @@ mongoose
   .connect(
     'mongodb+srv://admin:admin@cluster0.ph7fc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
   )
-  .then(() => app.listen(PORT, () => console.log(`app runing on ${PORT}`)))
+  .then(() => app.listen(PORT, () => console.log(`app running on ${PORT}`)))
   .catch((error) => console.log(error));

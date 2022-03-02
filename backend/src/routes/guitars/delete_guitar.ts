@@ -7,7 +7,7 @@ export default {
   method: HTTPMethod.DELETE,
   url: '/guitar',
   controller: async (req: Request) => {
-    const deleteGuitar = await Guitars.findOneAndDelete(req.body.id);
+    const deleteGuitar = await Guitars.findByIdAndDelete(req.body.id);
 
     return { deleteGuitar };
   },

@@ -19,5 +19,6 @@ export default {
     });
 
     await guitars.save();
+    return guitars;
   },
 } as APIRoute;
