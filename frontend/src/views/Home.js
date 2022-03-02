@@ -30,7 +30,6 @@ const Home = () => {
   const handleUpdate = data => {
     dispatch(updateGuitar(data.updateId, data.updateName, data.updatePrice));
   };
-  console.log(allGuitars);
   return (
     <>
       <form onSubmit={handleSubmit(handleCreate)}>

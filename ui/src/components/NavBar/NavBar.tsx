@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { basicRoute } from '../../routes/routes';
@@ -36,7 +37,7 @@ const NavBar = () => {
     <MainWrapper>
       <Wrapper>
         <ListItem>
-          <StyledNavlink to={basicRoute.home}>Home</StyledNavlink>
+          <StyledNavlink to={basicRoute.admin}>Admin</StyledNavlink>
         </ListItem>
         <ListItem>
           <StyledNavlink to={basicRoute.about}>About</StyledNavlink>

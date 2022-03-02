@@ -3,4 +3,5 @@ export const basicRoute = {
   products: '/products',
   about: '/about',
   contact: '/contact',
+  admin: '/admin',
 };

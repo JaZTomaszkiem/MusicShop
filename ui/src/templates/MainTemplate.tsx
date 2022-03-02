@@ -7,14 +7,14 @@ const Test = styled.div`
   /* padding-left: 330px; */
 `;
 
-const MainTemplate = ({ children }) => {
+export function MainTemplate({ children }) {
   return (
     <>
       <NavBar></NavBar>
       <Test>{children}</Test>
     </>
   );
-};
+}
 
 MainTemplate.propTypes = {
   children: PropTypes.element.isRequired,

@@ -12,7 +12,7 @@ import {
 } from '../actions/guitars';
 import { useForm } from 'react-hook-form';
 
-const Home = () => {
+const Admin = () => {
   const dispatch = useDispatch();
 
   const allGuitars = useSelector((state: any) => state.ItemReducer);
@@ -33,14 +33,12 @@ const Home = () => {
   };
 
   const handleDelete = (data) => {
-    console.log(data);
     dispatch(deleteGuitar(data));
   };
 
   const handleUpdate = (data) => {
     dispatch(updateGuitar(data.updateId, data.updateName, data.updatePrice));
   };
-  console.log(allGuitars);
   return (
     <>
       <form onSubmit={handleSubmit(handleCreate)}>
@@ -60,7 +58,7 @@ const Home = () => {
       </form>
 
       <form onSubmit={handleSubmit(handleGet)}>
-        <button onClick={handleGet}>Get All</button>
+        <Button onClick={handleGet}>Get All</Button>
       </form>
 
       <form onSubmit={handleSubmit(handleUpdate)}>
@@ -74,12 +72,15 @@ const Home = () => {
       </form>
 
       {allGuitars.map((guitar) => (
-        <li
-          key={guitar._id}
-        >{`nazwa: ${guitar.name} cena: ${guitar.price} id: ${guitar._id}`}</li>
+        <li key={guitar._id}>
+          {`nazwa: ${guitar.name} cena: ${guitar.price} id: ${guitar._id} `}
+          <Button onClick={() => handleDelete({ id: guitar._id })}>
+            delete
+          </Button>
+        </li>
       ))}
     </>
   );
 };
 
-export default Home;
+export default Admin;

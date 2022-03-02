@@ -37,7 +37,6 @@ export const deleteGuitar = async id => {
 
 export const updateGuitar = async (id, name, price) => {
   try {
-    console.log(id, name, price);
     const response = await axiosApi.patch(`/guitar`, { id, name, price });
 
     return response;
