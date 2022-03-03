@@ -1,6 +1,17 @@
 import { actionTypes } from '../../constants/actionTypes';
 
-const ItemReducer = (state = [], action) => {
+import { AnyAction } from 'redux';
+
+import { StateGuitars } from 'types/Redux';
+
+function initialState(): StateGuitars {
+  return [];
+}
+
+const GuitarReducer = (
+  state: StateGuitars = initialState(),
+  action: AnyAction
+) => {
   switch (action.type) {
     case actionTypes.GET_ALL_GUITARS:
       return action.payload;
@@ -28,4 +39,4 @@ const ItemReducer = (state = [], action) => {
   }
 };
 
-export default ItemReducer;
+export default GuitarReducer;

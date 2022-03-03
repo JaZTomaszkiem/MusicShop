@@ -1,7 +1,7 @@
-import { Task } from 'types/Tasks';
+import { Guitar } from 'types/Guitars';
 
 export type State = {
-    tasks: StateTasks;
-}
+  guitars: StateGuitars;
+};
 
-export type StateTasks = Task[];
+export type StateGuitars = Guitar[];

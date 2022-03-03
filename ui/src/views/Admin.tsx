@@ -10,12 +10,14 @@ import {
   deleteGuitar,
   updateGuitar,
 } from '../actions/guitars';
+import { State } from '../types/Redux';
 import { useForm } from 'react-hook-form';
+import { Guitar } from 'types/Guitars';
 
 const Admin = () => {
   const dispatch = useDispatch();
 
-  const allGuitars = useSelector((state: any) => state.ItemReducer);
+  const allGuitars = useSelector((state: State) => state.guitars);
 
   const { register, handleSubmit } = useForm();
   const { register: registerDelete, handleSubmit: handleSubmitDelete } =
@@ -71,7 +73,7 @@ const Admin = () => {
         <Button type='submit'>Update</Button>
       </form>
 
-      {allGuitars.map((guitar) => (
+      {allGuitars.map((guitar: Guitar) => (
         <li key={guitar._id}>
           {`nazwa: ${guitar.name} cena: ${guitar.price} id: ${guitar._id} `}
           <Button onClick={() => handleDelete({ id: guitar._id })}>

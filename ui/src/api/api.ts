@@ -1,6 +1,6 @@
 import axios from 'axios';
 const axiosApi = axios.create({
-  baseURL: `${process.env.REACT_APP_BASE_URL}`,
+  baseURL: `${process.env.BASE_URL}`,
   timeout: 1000,
   headers: { 'X-Custom-Header': 'foobar' },
 });

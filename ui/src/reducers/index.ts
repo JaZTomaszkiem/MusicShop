@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
-import ItemReducer from './ItemReducer/ItemReducer';
-
-import tasks from './tasks';
+import GuitarReducer from './ItemReducer/GuitarReducer';
 
 export default combineReducers({
-  ItemReducer,
-  tasks,
+  guitars: GuitarReducer,
 });

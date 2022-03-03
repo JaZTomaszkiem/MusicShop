@@ -33,12 +33,4 @@ export function App() {
   );
 }
 
-const Template = () => (
-  <>
-    <Link to='/admin'>
-      <button>admin</button>
-    </Link>
-  </>
-);
-
 export default App;

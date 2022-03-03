@@ -60,6 +60,6 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [{ from: './src/global.css', to: './style.css' }],
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'REACT_APP_BASE_URL']),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'BASE_URL']),
   ],
 };
