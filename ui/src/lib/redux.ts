@@ -6,9 +6,9 @@ import { State } from 'types/Redux';
 
 import reducers from 'reducers/';
 
-export function createAppStore (): Store<State> {
-    const composer = composeWithDevTools({});
-    const store = createStore(reducers, {}, composer(applyMiddleware(Thunk)));
+export function createAppStore(): Store<State> {
+  const composer = composeWithDevTools({});
+  const store = createStore(reducers, {}, composer(applyMiddleware(Thunk)));
 
-    return store;
+  return store;
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import NavBar from '../components/NavBar/NavBar';
 
@@ -7,17 +6,17 @@ const Test = styled.div`
   /* padding-left: 330px; */
 `;
 
-const MainTemplate = ({ children }) => {
+type MainTemplateProps = {
+  children: JSX.Element;
+};
+
+export function MainTemplate({ children }: MainTemplateProps) {
   return (
     <>
       <NavBar></NavBar>
       <Test>{children}</Test>
     </>
   );
-};
-
-MainTemplate.propTypes = {
-  children: PropTypes.element.isRequired,
-};
+}
 
 export default MainTemplate;
