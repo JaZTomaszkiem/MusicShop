@@ -1,8 +1,8 @@
-import { actionTypes } from '../../constants/actionTypes';
+import { actionTypes } from 'constants/actionTypes';
 
 import { AnyAction } from 'redux';
 
-import { StateGuitars } from 'types/Redux';
+import { StateGuitars } from 'types/redux/Redux';
 
 function initialState(): StateGuitars {
   return [];

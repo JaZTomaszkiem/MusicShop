@@ -9,8 +9,8 @@ import {
   createAllGuitars,
   deleteGuitar,
   updateGuitar,
-} from '../actions/guitars';
-import { State } from '../types/Redux';
+} from 'store/action-creators';
+import { State } from 'types/redux/Redux';
 import { useForm } from 'react-hook-form';
 import { Guitar } from 'types/Guitars';
 

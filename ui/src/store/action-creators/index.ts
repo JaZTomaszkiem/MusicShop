@@ -1,5 +1,5 @@
-import * as api from '../api/api';
-import { actionTypes } from '../constants/actionTypes';
+import * as api from 'api/api';
+import { actionTypes } from 'constants/actionTypes';
 
 export const getAllGuitars = () => async (dispatch) => {
   try {

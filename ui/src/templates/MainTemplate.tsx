@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import NavBar from '../components/NavBar/NavBar';
+import NavBar from 'components/NavBar/NavBar';
 
 const Test = styled.div`
   /* padding-left: 330px; */
